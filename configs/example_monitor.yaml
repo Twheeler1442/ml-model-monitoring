@@ -1,0 +1,37 @@
+# Example monitor configuration.
+# Real deployments load these via a YAML loader; tests use the defaults
+# baked into the drift_detection functions.
+
+model:
+  name: churn_classifier_v2
+  version: "2.3.1"
+
+features:
+  numeric:
+    - monthly_charges
+    - tenure_months
+    - support_tickets_30d
+    - bandwidth_gb
+  categorical:
+    - plan_tier
+    - payment_method
+  score_column: churn_score
+
+thresholds:
+  ks:
+    warning_p: 0.05
+    critical_p: 0.01
+  psi:
+    warning: 0.10
+    critical: 0.25
+  chi2:
+    warning_p: 0.05
+    critical_p: 0.01
+
+alerting:
+  slack:
+    enabled: true
+    webhook_secret: SLACK_WEBHOOK_URL
+  snowflake:
+    enabled: true
+    table: model_monitoring_audit
