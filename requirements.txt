@@ -1,0 +1,13 @@
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+pyarrow>=14.0
+
+# Optional runtime extras
+# matplotlib>=3.7
+# requests>=2.31
+# snowflake-connector-python>=3.0
+# pyyaml>=6.0
+
+# Dev
+pytest>=8.0
